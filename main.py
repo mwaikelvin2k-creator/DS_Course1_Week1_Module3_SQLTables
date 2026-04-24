@@ -74,7 +74,7 @@ df_payment = pd.read_sql("""
                 p.paymentDate,
                 CAST(p.amount AS REAL)
         FROM customers c
-        FULL OUTER JOIN payments p
+        LEFT JOIN payments p
         ON c.customerNumber = p.customerNumber
         ORDER BY CAST(p.amount AS REAL) DESC
 """, conn)

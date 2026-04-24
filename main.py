@@ -15,7 +15,8 @@ pd.read_sql("""SELECT * FROM sqlite_master""", conn)
 df_boston = pd.read_sql(""" 
         SELECT 
             firstName,
-            lastName
+            lastName,
+            jobTitle
         FROM employees e
         JOIN offices o ON e.officeCode = o.officecode
         WHERE city = 'Boston'
@@ -160,7 +161,6 @@ df_under_20 = pd.read_sql("""
                 GROUP BY productCode
                 HAVING COUNT(DISTINCT customers.customerNumber) < 20
         )
-        ORDER BY e.lastName
 """, conn)
 
 # Run this cell without changes

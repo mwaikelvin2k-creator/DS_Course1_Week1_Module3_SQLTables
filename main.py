@@ -74,11 +74,10 @@ df_payment = pd.read_sql("""
                 p.paymentDate,
                 CAST(p.amount AS REAL)
         FROM customers c
-        LEFT JOIN payments p
+        JOIN payments p
         ON c.customerNumber = p.customerNumber
         ORDER BY CAST(p.amount AS REAL) DESC
 """, conn)
-df_payment
 
 # CodeGrade step6
 # Replace None with your code
@@ -161,6 +160,7 @@ df_under_20 = pd.read_sql("""
                 GROUP BY productCode
                 HAVING COUNT(DISTINCT customers.customerNumber) < 20
         )
+        ORDER BY e.lastName
 """, conn)
 
 # Run this cell without changes
